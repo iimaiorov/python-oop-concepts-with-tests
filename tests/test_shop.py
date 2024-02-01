@@ -1,9 +1,9 @@
 """
-Протестируйте классы из модуля homework/pages.py
+Протестируйте классы из модуля homework/models.py
 """
 import pytest
 
-from models.pages import Product, Cart
+from models.models import Product, Cart
 
 
 @pytest.fixture
