@@ -28,7 +28,8 @@ class TestProducts:
 
     def test_product_buy(self, product):
         # TODO напишите проверки на метод buy
-        assert product.buy(100) == True
+        product.buy(100)
+        assert product.quantity == 900
 
     def test_product_buy_more_than_available(self, product):
         # TODO напишите проверки на метод buy,
@@ -48,6 +49,7 @@ class TestCart:
     def test_add_product(self, product, cart):
         cart.add_product(product)
         assert product in cart.products
+        assert cart.products[product] == 1
 
     def test_remove_product(self, product, cart):
         cart.add_product(product)
@@ -73,7 +75,7 @@ class TestCart:
         assert product.quantity == 999
 
     def test_buy_more_than_available(self, product, cart):
-        cart.add_product(Product("milk", 50, "This is milk", 1), 2)
+        cart.add_product(Product("milk", 50, "This is milk", 2), 3)
         cart.add_product(Product("bread", 30, "This is bread", 1), 1)
         with pytest.raises(ValueError):
             cart.buy()
